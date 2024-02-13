@@ -4,11 +4,15 @@ const submitBtn = document.querySelector('.submit-btn')
 
 submitBtn.addEventListener('click',async ()=>{
     console.log('clicked');
-    const uname = document.getElementById('name').value
+    const name = document.getElementById('name').value
     const phone = document.getElementById('phone').value
     const region = document.getElementById('region').value
     const village = document.getElementById('village').value
 
+    if(!name || !phone || !region || !village ){
+        console.log('cant be empty');
+        return;
+    }
 
     try {
         await fetch(`https://evangelism.onrender.com/save-soul`, {
@@ -16,7 +20,7 @@ submitBtn.addEventListener('click',async ()=>{
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ uname, phone, region, village }),
+          body: JSON.stringify({ name, phone, region, village }),
         });
         alert('Post added successfully!');
       } catch (error) {
