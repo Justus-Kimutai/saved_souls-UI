@@ -5,7 +5,7 @@ const backEndURL = 'https://evangelism.onrender.com'
 submitBtn.addEventListener('click',async ()=>{
     console.log('clicked');
     const name = document.getElementById('name').value
-    const phone = document.getElementById('phone').value
+    const phone = document.getElementById('phone').value.toString()
     const region = document.getElementById('region').value
     const village = document.getElementById('village').value
 
