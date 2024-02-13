@@ -1,0 +1,64 @@
+*,::before,::after{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+img{
+    width: 60px;
+}
+.logo{
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+}
+.container {
+    width: 90%;
+    margin:0 auto ;
+}
+input{
+    display: block;
+    margin-bottom: 1.25em;
+    width: 100%;
+    background: #c8c0a4e3;
+
+    outline: none;
+    border: none;
+    padding: .2em;
+}
+
+.title{
+    margin-bottom: 0;
+}
+.title-sub{
+    margin-top: 0;
+}
+.title,
+.title-sub,
+.sub-title,
+.won-souls{
+    text-align: center;
+}
+
+#postForm{
+    padding: 1em  3em;
+    background: #F5ECC9;
+}
+
+.submit-btn{
+    background: #00C6FF;
+    border: 0;
+    padding: .25em .75em;
+    border-radius: 5px;
+}
+th{
+    text-align: left;
+}
+
+table{
+    width: 100%;
+
+}

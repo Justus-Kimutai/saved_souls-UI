@@ -1,6 +1,6 @@
 const submitBtn = document.querySelector('.submit-btn')
 
-// const backEndURL = 'https://evangelism.onrender.com'
+const backEndURL = 'https://evangelism.onrender.com'
 
 submitBtn.addEventListener('click',async ()=>{
     console.log('clicked');
@@ -10,7 +10,7 @@ submitBtn.addEventListener('click',async ()=>{
     const village = document.getElementById('village').value
 
     if(!name || !phone || !region || !village ){
-        console.log('cant be empty');
+        alert('cant be empty');
         return;
     }
 
@@ -22,10 +22,43 @@ submitBtn.addEventListener('click',async ()=>{
           },
           body: JSON.stringify({ name, phone, region, village }),
         });
-        alert('Post added successfully!');
+        document.querySelector('tbody').textContent = ""
+        fetchPosts()
+        document.getElementById('name').value = ""
+        document.getElementById('phone').value = ""
+        document.getElementById('region').value = ""
+        document.getElementById('village').value = ""
+       
       } catch (error) {
         console.error(error);
       }
+
 })
 
 
+async function fetchPosts() {
+  try {
+    const response = await fetch(`${backEndURL}/get-saved`);
+    const posts = await response.json();
+    
+    const postsList = document.getElementById('postsList');
+    const table = document.querySelector('table');
+
+    const tbody = table.querySelector('tbody');
+    
+    posts.forEach(post => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${post.name}</td>
+        <td>${post.region}</td>
+      `;
+      tbody.prepend(row);
+    });
+    postsList.appendChild(table);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+fetchPosts()
