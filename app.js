@@ -22,7 +22,6 @@ submitBtn.addEventListener('click',async ()=>{
           },
           body: JSON.stringify({ name, phone, region, village }),
         });
-        document.querySelector('tbody').textContent = ""
         fetchPosts()
         document.getElementById('name').value = ""
         document.getElementById('phone').value = ""
@@ -37,6 +36,7 @@ submitBtn.addEventListener('click',async ()=>{
 
 
 async function fetchPosts() {
+  document.querySelector('tbody').textContent = ""
   try {
     const response = await fetch(`${backEndURL}/get-saved`);
     const posts = await response.json();
